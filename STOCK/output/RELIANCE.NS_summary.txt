@@ -1,0 +1,35 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: RELIANCE.NS
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : SELL
+  LightGBM Class : Sell
+  Confidence     : 19.4 / 100
+  Entry Price    : 1361.80
+  Stop Loss      : 1297.98
+  Target Price   : 1457.53
+  Regime         : Bear Ranging
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Neutral
+  Score          : +0.1342
+  3-Day Rolling  : +0.1342
+  7-Day Rolling  : +0.1342
+  Momentum       : +0.0000
+  News Volume    : 1.0000
+  Top Headline   : Hello, Login
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +6.83%
+  Sharpe Ratio   : 1.614
+  Max Drawdown   : -1.23%
+  Win Rate       : 22.4%
+  Total Trades   : 108
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+3.22% | Sharpe=2.380 | MaxDD=-0.43% | WinRate=23.5%
+  Fold 2: Return=+3.76% | Sharpe=2.859 | MaxDD=-0.51% | WinRate=20.7%
+  Fold 3: Return=-0.25% | Sharpe=-0.163 | MaxDD=-1.23% | WinRate=23.1%
+
+═══════════════════════════════════════════════════════

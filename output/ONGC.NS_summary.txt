@@ -1,0 +1,36 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: ONGC.NS
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : HOLD
+  LightGBM Class : Hold
+  Confidence     : 37.7 / 100
+  Entry Price    : ₹290.00
+  Stop Loss      : ₹275.64
+  Target Price   : ₹311.54
+  Regime         : Bull Trending
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Neutral
+  Score          : +0.1041
+  3-Day Rolling  : +0.1041
+  7-Day Rolling  : +0.1041
+  Momentum       : +0.0000
+  News Volume    : 0.9000
+  Top Headline   : Petrol Price Hike Done… But Why Are Oil Companies Still Losing Money?
+  Headline Link  : https://www.moneycontrol.com/news/videos/business/petrol-price-hike-done-but-why-are-oil-companies-still-losing-money-13920456.html
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +12.02%
+  Sharpe Ratio   : 1.933
+  Max Drawdown   : -1.60%
+  Win Rate       : 21.4%
+  Total Trades   : 84
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+6.23% | Sharpe=2.843 | MaxDD=-0.61% | WinRate=24.3%
+  Fold 2: Return=+4.02% | Sharpe=1.720 | MaxDD=-1.60% | WinRate=24.7%
+  Fold 3: Return=+1.38% | Sharpe=1.045 | MaxDD=-1.00% | WinRate=15.1%
+
+═══════════════════════════════════════════════════════

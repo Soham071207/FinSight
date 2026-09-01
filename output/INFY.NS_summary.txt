@@ -1,0 +1,35 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: INFY.NS
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : BUY
+  LightGBM Class : Buy
+  Confidence     : 55.9 / 100
+  Entry Price    : 1095.00
+  Stop Loss      : 1029.84
+  Target Price   : 1192.73
+  Regime         : Bear Trending
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Neutral
+  Score          : +0.0150
+  3-Day Rolling  : +0.0150
+  7-Day Rolling  : +0.0150
+  Momentum       : +0.0000
+  News Volume    : 1.0000
+  Top Headline   : Hello, Login
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +6.76%
+  Sharpe Ratio   : 1.608
+  Max Drawdown   : -1.50%
+  Win Rate       : 17.3%
+  Total Trades   : 92
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+3.41% | Sharpe=2.835 | MaxDD=-0.22% | WinRate=14.3%
+  Fold 2: Return=+3.43% | Sharpe=2.546 | MaxDD=-0.48% | WinRate=19.9%
+  Fold 3: Return=-0.18% | Sharpe=-0.110 | MaxDD=-1.50% | WinRate=17.5%
+
+═══════════════════════════════════════════════════════

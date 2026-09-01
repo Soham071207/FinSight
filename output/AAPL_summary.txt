@@ -1,0 +1,35 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: AAPL
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : BUY
+  LightGBM Class : Buy
+  Confidence     : 58.8 / 100
+  Entry Price    : $298.21
+  Stop Loss      : $285.80
+  Target Price   : $316.82
+  Regime         : Bull Trending
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Neutral
+  Score          : +0.0017
+  3-Day Rolling  : +0.0017
+  7-Day Rolling  : +0.0017
+  Momentum       : +0.0000
+  News Volume    : 1.0000
+  Top Headline   : The "Magnificent Seven" Has Gained $4.8 Trillion Since the Start of April. Here's Why That's a Risk to the S&P 500 and Nasdaq-100.
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +9.68%
+  Sharpe Ratio   : 2.251
+  Max Drawdown   : -0.76%
+  Win Rate       : 17.4%
+  Total Trades   : 76
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+3.68% | Sharpe=2.628 | MaxDD=-0.70% | WinRate=21.5%
+  Fold 2: Return=+5.79% | Sharpe=3.225 | MaxDD=-0.47% | WinRate=26.3%
+  Fold 3: Return=+0.01% | Sharpe=0.013 | MaxDD=-0.76% | WinRate=4.4%
+
+═══════════════════════════════════════════════════════

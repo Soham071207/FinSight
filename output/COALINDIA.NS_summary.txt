@@ -1,0 +1,35 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: COALINDIA.NS
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : HOLD
+  LightGBM Class : Hold
+  Confidence     : 37.4 / 100
+  Entry Price    : ₹454.05
+  Stop Loss      : ₹428.75
+  Target Price   : ₹492.00
+  Regime         : Bull Ranging
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Neutral
+  Score          : +0.1168
+  3-Day Rolling  : +0.1168
+  7-Day Rolling  : +0.1168
+  Momentum       : +0.0000
+  News Volume    : 0.3000
+  Top Headline   : Hello, Login
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +11.80%
+  Sharpe Ratio   : 1.902
+  Max Drawdown   : -1.45%
+  Win Rate       : 20.1%
+  Total Trades   : 96
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+9.46% | Sharpe=3.831 | MaxDD=-0.68% | WinRate=25.9%
+  Fold 2: Return=+1.45% | Sharpe=0.664 | MaxDD=-1.45% | WinRate=22.3%
+  Fold 3: Return=+0.67% | Sharpe=0.694 | MaxDD=-0.65% | WinRate=12.0%
+
+═══════════════════════════════════════════════════════

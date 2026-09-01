@@ -1,0 +1,17 @@
+flask
+flask-cors
+pandas
+numpy
+yfinance
+lightgbm
+statsmodels
+arch
+scikit-learn
+joblib
+pandas-market-calendars
+ta
+nltk
+requests
+beautifulsoup4
+lxml
+matplotlib

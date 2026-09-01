@@ -1,0 +1,36 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: TITAN.NS
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : HOLD
+  LightGBM Class : Hold
+  Confidence     : 44.9 / 100
+  Entry Price    : ₹4079.80
+  Stop Loss      : ₹3851.25
+  Target Price   : ₹4422.63
+  Regime         : Bear Ranging
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Bullish
+  Score          : +0.2396
+  3-Day Rolling  : +0.2396
+  7-Day Rolling  : +0.2396
+  Momentum       : +0.0000
+  News Volume    : 0.9500
+  Top Headline   : Jewellery stocks see mixed trade as gold, silver imports to get costlier
+  Headline Link  : https://www.moneycontrol.com/news/business/markets/kalyan-jewellers-senco-gold-other-jewellery-stocks-decline-up-to-4-as-gold-silver-imports-to-get-costlier-13917562.html
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +6.25%
+  Sharpe Ratio   : 1.579
+  Max Drawdown   : -1.04%
+  Win Rate       : 18.1%
+  Total Trades   : 106
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+3.08% | Sharpe=2.516 | MaxDD=-0.37% | WinRate=21.1%
+  Fold 2: Return=+1.86% | Sharpe=1.339 | MaxDD=-1.04% | WinRate=19.1%
+  Fold 3: Return=+1.20% | Sharpe=0.950 | MaxDD=-0.87% | WinRate=13.9%
+
+═══════════════════════════════════════════════════════

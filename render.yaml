@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: mutual-funds-api
+    env: docker
+    dockerfilePath: ./Dockerfile.mutual
+    plan: free
+    envVars:
+      - key: PORT
+        value: 5050
+
+  - type: web
+    name: stock-prediction-api
+    env: docker
+    dockerfilePath: ./STOCK/Dockerfile
+    dockerContext: ./STOCK
+    plan: free
+    envVars:
+      - key: PORT
+        value: 5051
+      - key: USE_FINBERT
+        value: "false"

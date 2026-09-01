@@ -1,0 +1,35 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: RR.L
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : BUY
+  LightGBM Class : Strong Buy
+  Confidence     : 69.5 / 100
+  Entry Price    : £1197.20
+  Stop Loss      : £1083.90
+  Target Price   : £1367.15
+  Regime         : Bear Ranging
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Bullish
+  Score          : +0.2311
+  3-Day Rolling  : +0.2311
+  7-Day Rolling  : +0.2311
+  Momentum       : +0.0000
+  News Volume    : 1.0000
+  Top Headline   : Zapata Quantum to Present Alongside Fortune 500 and Quantum Leaders at Upcoming Investor and Industry Conferences
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +22.02%
+  Sharpe Ratio   : 2.370
+  Max Drawdown   : -1.62%
+  Win Rate       : 25.5%
+  Total Trades   : 98
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+11.46% | Sharpe=3.358 | MaxDD=-0.77% | WinRate=28.7%
+  Fold 2: Return=+7.89% | Sharpe=2.901 | MaxDD=-0.71% | WinRate=28.3%
+  Fold 3: Return=+1.47% | Sharpe=0.598 | MaxDD=-1.62% | WinRate=19.5%
+
+═══════════════════════════════════════════════════════

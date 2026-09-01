@@ -1,0 +1,35 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: AAPL
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : HOLD
+  LightGBM Class : Hold
+  Confidence     : 48.1 / 100
+  Entry Price    : 298.86
+  Stop Loss      : 286.60
+  Target Price   : 317.25
+  Regime         : Bull Trending
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Neutral
+  Score          : +0.0290
+  3-Day Rolling  : +0.0290
+  7-Day Rolling  : +0.0290
+  Momentum       : +0.0000
+  News Volume    : 1.0000
+  Top Headline   : Netflix Just Raised Guidance. The Market Sold It Off. We See 283% Upside
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +10.01%
+  Sharpe Ratio   : 2.217
+  Max Drawdown   : -0.99%
+  Win Rate       : 18.9%
+  Total Trades   : 78
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+3.68% | Sharpe=2.628 | MaxDD=-0.70% | WinRate=21.5%
+  Fold 2: Return=+5.79% | Sharpe=3.225 | MaxDD=-0.47% | WinRate=26.3%
+  Fold 3: Return=+0.31% | Sharpe=0.286 | MaxDD=-0.99% | WinRate=8.8%
+
+═══════════════════════════════════════════════════════

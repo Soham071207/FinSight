@@ -1,0 +1,36 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: MAXHEALTH.NS
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : HOLD
+  LightGBM Class : Hold
+  Confidence     : 45.1 / 100
+  Entry Price    : ₹1023.25
+  Stop Loss      : ₹960.08
+  Target Price   : ₹1118.00
+  Regime         : Bull Ranging
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Neutral
+  Score          : +0.0893
+  3-Day Rolling  : +0.0893
+  7-Day Rolling  : +0.0893
+  Momentum       : +0.0000
+  News Volume    : 0.4500
+  Top Headline   : Sharda Motor Consolidated March 2026 Net Sales at Rs 971.76 crore, up 29.59% Y-o-Y
+  Headline Link  : https://www.moneycontrol.com/news/business/earnings/sharda-motor-consolidated-march-2026-net-sales-at-rs-971-76-crore-up-29-59-y-o-y-13927699.html
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +19.60%
+  Sharpe Ratio   : 2.244
+  Max Drawdown   : -2.25%
+  Win Rate       : 30.4%
+  Total Trades   : 110
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+9.15% | Sharpe=3.111 | MaxDD=-1.43% | WinRate=31.9%
+  Fold 2: Return=+8.16% | Sharpe=2.594 | MaxDD=-1.05% | WinRate=29.1%
+  Fold 3: Return=+1.31% | Sharpe=0.649 | MaxDD=-2.25% | WinRate=30.3%
+
+═══════════════════════════════════════════════════════

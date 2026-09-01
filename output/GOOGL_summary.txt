@@ -1,0 +1,35 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: GOOGL
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : BUY
+  LightGBM Class : Buy
+  Confidence     : 54.4 / 100
+  Entry Price    : 399.35
+  Stop Loss      : 379.69
+  Target Price   : 428.83
+  Regime         : Bull Trending
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Neutral
+  Score          : -0.0076
+  3-Day Rolling  : -0.0076
+  7-Day Rolling  : -0.0076
+  Momentum       : +0.0000
+  News Volume    : 1.0000
+  Top Headline   : Elon Musk vs. Jeff Bezos: The Three-Way War for the Future of Space-Based AI
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +10.26%
+  Sharpe Ratio   : 1.660
+  Max Drawdown   : -2.78%
+  Win Rate       : 26.7%
+  Total Trades   : 118
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+6.16% | Sharpe=2.566 | MaxDD=-1.29% | WinRate=36.3%
+  Fold 2: Return=+3.38% | Sharpe=1.832 | MaxDD=-1.44% | WinRate=29.5%
+  Fold 3: Return=+0.46% | Sharpe=0.279 | MaxDD=-2.78% | WinRate=14.3%
+
+═══════════════════════════════════════════════════════

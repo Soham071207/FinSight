@@ -1,0 +1,35 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: MSFT
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : BUY
+  LightGBM Class : Buy
+  Confidence     : 48.8 / 100
+  Entry Price    : $408.62
+  Stop Loss      : $387.68
+  Target Price   : $440.04
+  Regime         : Bull Ranging
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Neutral
+  Score          : +0.0992
+  3-Day Rolling  : +0.0992
+  7-Day Rolling  : +0.0992
+  Momentum       : +0.0000
+  News Volume    : 1.0000
+  Top Headline   : It Took Salesforce 20 Years to Reach $30 Billion in Revenue — Anthropic Did It in 3
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +5.64%
+  Sharpe Ratio   : 1.293
+  Max Drawdown   : -2.53%
+  Win Rate       : 20.5%
+  Total Trades   : 96
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+4.09% | Sharpe=2.890 | MaxDD=-0.40% | WinRate=23.1%
+  Fold 2: Return=+3.12% | Sharpe=2.199 | MaxDD=-0.72% | WinRate=20.7%
+  Fold 3: Return=-1.59% | Sharpe=-1.093 | MaxDD=-2.53% | WinRate=17.5%
+
+═══════════════════════════════════════════════════════

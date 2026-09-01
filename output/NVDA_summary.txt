@@ -1,0 +1,36 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: NVDA
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : BUY
+  LightGBM Class : Buy
+  Confidence     : 60.1 / 100
+  Entry Price    : $215.33
+  Stop Loss      : $200.16
+  Target Price   : $238.09
+  Regime         : Bull Trending
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Bullish
+  Score          : +0.1985
+  3-Day Rolling  : +0.1985
+  7-Day Rolling  : +0.1985
+  Momentum       : +0.0000
+  News Volume    : 1.0000
+  Top Headline   : PJUL Caps Your S&P 500 Gains at 11% While Protecting Against 40% Crashes: The Math for Retirees
+  Headline Link  : https://247wallst.com/investing/2026/05/23/pjul-caps-your-sp-500-gains-at-11-while-protecting-against-40-crashes-the-math-for-retirees/?.tsrc=rss
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +25.42%
+  Sharpe Ratio   : 2.571
+  Max Drawdown   : -2.77%
+  Win Rate       : 27.6%
+  Total Trades   : 112
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+12.43% | Sharpe=3.998 | MaxDD=-1.03% | WinRate=34.3%
+  Fold 2: Return=+13.07% | Sharpe=3.427 | MaxDD=-0.99% | WinRate=30.7%
+  Fold 3: Return=-1.34% | Sharpe=-0.652 | MaxDD=-2.77% | WinRate=17.9%
+
+═══════════════════════════════════════════════════════

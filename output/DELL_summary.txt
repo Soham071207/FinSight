@@ -1,0 +1,36 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: DELL
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : SELL
+  LightGBM Class : Sell
+  Confidence     : 2.3 / 100
+  Entry Price    : $295.19
+  Stop Loss      : $265.09
+  Target Price   : $340.35
+  Regime         : Bull Trending
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Bullish
+  Score          : +0.2138
+  3-Day Rolling  : +0.2138
+  7-Day Rolling  : +0.2138
+  Momentum       : +0.0000
+  News Volume    : 1.0000
+  Top Headline   : Dow Jones Futures: Stock Market Rebounds To Highs; Tesla, These Five AI Plays Are At Buy Points
+  Headline Link  : https://finance.yahoo.com/m/879072fd-2d18-3074-b2ec-2e92c37a571e/dow-jones-futures%3A-stock.html?.tsrc=rss
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +34.63%
+  Sharpe Ratio   : 2.622
+  Max Drawdown   : -2.44%
+  Win Rate       : 26.2%
+  Total Trades   : 94
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+16.23% | Sharpe=3.014 | MaxDD=-0.78% | WinRate=36.3%
+  Fold 2: Return=+10.80% | Sharpe=2.715 | MaxDD=-2.44% | WinRate=29.1%
+  Fold 3: Return=+4.54% | Sharpe=2.356 | MaxDD=-0.74% | WinRate=12.7%
+
+═══════════════════════════════════════════════════════

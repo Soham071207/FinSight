@@ -1,0 +1,36 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: TCS.NS
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : BUY
+  LightGBM Class : Buy
+  Confidence     : 55.0 / 100
+  Entry Price    : ₹2317.30
+  Stop Loss      : ₹2207.20
+  Target Price   : ₹2482.45
+  Regime         : Bear Ranging
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Neutral
+  Score          : -0.0959
+  3-Day Rolling  : -0.0959
+  7-Day Rolling  : -0.0959
+  Momentum       : +0.0000
+  News Volume    : 0.9500
+  Top Headline   : NCW directs TCS to form separate internal committees at all 127 units within 4 weeks over PoSH gaps
+  Headline Link  : https://www.moneycontrol.com/city/ncw-directs-tcs-to-form-separate-internal-committees-at-all-127-units-within-4-weeks-over-posh-gaps-article-13928405.html
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +3.62%
+  Sharpe Ratio   : 0.972
+  Max Drawdown   : -3.08%
+  Win Rate       : 13.1%
+  Total Trades   : 78
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+4.25% | Sharpe=3.163 | MaxDD=-0.29% | WinRate=16.3%
+  Fold 2: Return=+2.15% | Sharpe=2.307 | MaxDD=-0.35% | WinRate=10.8%
+  Fold 3: Return=-2.70% | Sharpe=-2.020 | MaxDD=-3.01% | WinRate=12.4%
+
+═══════════════════════════════════════════════════════
