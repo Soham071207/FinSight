@@ -1,0 +1,76 @@
+# AI Agent Skills Workbook
+
+This workbook serves as a comprehensive guide to the AI agent skills you've installed today. These skills transform your agent into a highly disciplined, premium-quality engineering team.
+
+---
+
+## 1. Project Lifecycle & Workflow (`gsd-core`)
+**Goal:** Prevent context rot and build complex features systematically without the AI losing track of the goal.
+GSD (Git. Ship. Done.) breaks large tasks into manageable phases run in isolated contexts.
+
+> [!TIP]
+> Use GSD Core when starting a new major project, onboarding into a massive codebase, or building complex features that require planning and multiple files.
+
+**Key Commands:**
+*   `/gsd-new-project`: Start a brand-new project from scratch. It asks you questions and builds a `PROJECT.md` and `ROADMAP.md`.
+*   `/gsd-onboard`: Run this when you enter an existing codebase so the AI can build a knowledge map of it.
+*   `/gsd-plan-phase`: Ask the AI to thoroughly research and plan a specific feature.
+*   `/gsd-execute-phase`: Execute a planned phase asynchronously with clean context.
+*   `/gsd-verify-work` & `/gsd-ship`: Run quality assurance on the built feature and merge it.
+
+---
+
+## 2. Autonomous Requirements & Agent Loops (`ralph`)
+**Goal:** Automatically loop AI coding tools until Product Requirement Document (PRD) items are fully satisfied.
+
+> [!NOTE]
+> Ralph works best when you already have a structured PRD and want to automatically grind through the feature checklist without manual intervention.
+
+**Key Commands:**
+*   `/prd`: Ask the AI to write a highly detailed Product Requirements Document based on a vague idea (e.g., "Create a PRD for a user auth system").
+*   `/ralph`: Converts that PRD into a JSON format and initiates an autonomous agent loop that won't stop until all acceptance criteria are met.
+
+---
+
+## 3. Premium UI & Frontend Design (`taste-skill` & `impeccable`)
+**Goal:** Stop shipping "AI-looking" slop. These skills force the AI to act like a high-end design agency, utilizing strict typography, sophisticated color palettes, and modern layouts.
+
+> [!IMPORTANT]
+> When prompting for UI, explicitly use one of these command triggers to apply a specific design philosophy. 
+
+**Key Commands:**
+*   `/impeccable`: The master frontend skill. Use this to design, redesign, audit, or polish any UI. It enforces strict cognitive load management, high-end spacing, and micro-interactions.
+*   `/design-taste-frontend`: A strict anti-slop skill for landing pages and portfolios.
+*   `/minimalist-ui`: Forces clean editorial-style interfaces (warm monochrome, flat bento grids, muted pastels, no heavy shadows).
+*   `/industrial-brutalist-ui`: Raw mechanical interfaces, high typographic contrast, utility colors. Great for complex dev-tools or dashboards.
+*   `/high-end-visual-design`: Defines exact fonts, spacing, shadows, and card structures that make a website feel expensive.
+*   `/image-to-code`: Elite website image-to-code skill. Provide a UI screenshot and it will recreate it flawlessly.
+
+---
+
+## 4. UI Polish & Animations (`emilkowalski/skills`)
+**Goal:** Make the frontend feel alive, physical, and responsive using world-class motion design principles.
+
+> [!TIP]
+> Static UI is boring. Call on these skills after you have built your UI to add the final 10% of polish that makes users say "wow".
+
+**Key Commands:**
+*   `/animate`: Use this to build an animation from scratch. It handles properties, curves, durations, and interruptibility.
+*   `/find-animation-opportunities`: Ask the AI to scan a component or codebase and suggest exactly where motion *should* be added to improve UX.
+*   `/improve-animations`: Survey a codebase's existing motion and write a roadmap to fix stuttering, physics, or timing.
+*   `/apple-design`: Implements Apple's approach to fluid, physical motion (spring animations, interruptible transitions, momentum).
+*   `/animation-vocabulary`: Describe what you want ("the bouncy thing when a modal opens"), and this skill will find the exact industry term for it so you can prompt accurately.
+
+---
+
+## Example: The Ultimate Workflow
+
+Here is how you can string all these skills together to build a world-class application from scratch:
+
+1.  **Start:** Run `/gsd-new-project` to establish the project roadmap and setup.
+2.  **Define:** Run `/prd` to write a detailed specification for the first feature (e.g., "Authentication flow").
+3.  **Plan:** Run `/gsd-plan-phase` to research and plan the technical architecture.
+4.  **Execute:** Have the agent write the initial backend and frontend code for the feature.
+5.  **Polish Design:** Highlight the frontend code and run `/impeccable` to upgrade the UI from a basic MVP to a premium, high-end design.
+6.  **Add Motion:** Run `/find-animation-opportunities` to see where it can feel better, followed by `/animate` to implement fluid micro-interactions on the buttons and modals.
+7.  **Ship:** Run `/gsd-verify-work` and `/gsd-ship` to close out the phase!

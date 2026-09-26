@@ -169,6 +169,24 @@ def run():
     lr_preds = lr.predict(X_test)
 
     # ═══════════════════════════════════════════════════════════════════════
+    # VERIFICATION #4: AUC-ROC
+    # ═══════════════════════════════════════════════════════════════════════
+    try:
+        rf_probs = rf.predict_proba(X_test)[:, 1]
+        lr_probs = lr.predict_proba(X_test)[:, 1]
+        auc_ens = roc_auc_score(y_true, ensemble_conf)
+        auc_rf = roc_auc_score(y_true, rf_probs)
+        auc_lr = roc_auc_score(y_true, lr_probs)
+        auc_lstm = roc_auc_score(y_true, lstm_probs_flat)
+        print(f"\n  *** VERIFICATION #4: AUC-ROC ***")
+        print(f"  Ensemble AUC: {auc_ens:.4f}")
+        print(f"  TCN/LSTM AUC: {auc_lstm:.4f}")
+        print(f"  Random Forest AUC: {auc_rf:.4f}")
+        print(f"  Logistic Regression AUC: {auc_lr:.4f}")
+    except Exception as e:
+        print(f"  Could not calculate AUC: {e}")
+
+    # ═══════════════════════════════════════════════════════════════════════
     # VERIFICATION #2: McNemar's exact p-values
     # ═══════════════════════════════════════════════════════════════════════
     print(f"\n  *** VERIFICATION #2: McNemar's Test P-Values ***")
@@ -219,12 +237,15 @@ def run():
     prec_full = precision_score(y_true, ensemble_preds, zero_division=0) * 100
     rec_full = recall_score(y_true, ensemble_preds, zero_division=0) * 100
     f1_full = f1_score(y_true, ensemble_preds, zero_division=0) * 100
+    
+    auc_nr = roc_auc_score(y_true, ensemble_conf_nr)
 
-    print(f"\n  Full Ensemble:      Acc={acc_full:.1f}%  Prec={prec_full:.1f}%  Rec={rec_full:.1f}%  F1={f1_full:.1f}%")
-    print(f"  w/o Regime Routing: Acc={acc_nr:.1f}%  Prec={prec_nr:.1f}%  Rec={rec_nr:.1f}%  F1={f1_nr:.1f}%")
+    print(f"\n  Full Ensemble:      Acc={acc_full:.1f}%  Prec={prec_full:.1f}%  Rec={rec_full:.1f}%  F1={f1_full:.1f}%  AUC={auc_ens:.4f}")
+    print(f"  w/o Regime Routing: Acc={acc_nr:.1f}%  Prec={prec_nr:.1f}%  Rec={rec_nr:.1f}%  F1={f1_nr:.1f}%  AUC={auc_nr:.4f}")
     print(f"  Accuracy Drop:      {acc_full - acc_nr:+.1f}pp")
     print(f"  Precision Change:   {prec_full:.1f}% -> {prec_nr:.1f}% ({prec_nr - prec_full:+.1f}pp)")
     print(f"  Recall Change:      {rec_full:.1f}% -> {rec_nr:.1f}% ({rec_nr - rec_full:+.1f}pp)")
+    print(f"  AUC Change:         {auc_ens:.4f} -> {auc_nr:.4f} ({auc_nr - auc_ens:+.4f})")
 
     # ═══════════════════════════════════════════════════════════════════════
     # SUMMARY

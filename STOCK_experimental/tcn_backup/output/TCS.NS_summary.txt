@@ -1,0 +1,36 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: TCS.NS
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : HIGH RISK BUY
+  LightGBM Class : Strong Buy
+  Confidence     : 98.7 / 100
+  Entry Price    : ₹2147.50
+  Stop Loss      : ₹2025.57
+  Target Price   : ₹2330.40
+  Regime         : Bear Ranging
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Neutral
+  Score          : +0.0465
+  3-Day Rolling  : +0.0465
+  7-Day Rolling  : +0.0465
+  Momentum       : +0.0000
+  News Volume    : 0.8500
+  Top Headline   : 'Thanks for the insult': Developer reveals how a manager's remark pushed him to Google
+  Headline Link  : https://www.moneycontrol.com/news/trends/thanks-for-the-insult-developer-reveals-how-a-manager-s-remark-pushed-him-to-google-13954371.html
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +6.59%
+  Sharpe Ratio   : 1.526
+  Max Drawdown   : -1.81%
+  Win Rate       : 15.5%
+  Total Trades   : 82
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+4.43% | Sharpe=3.171 | MaxDD=-0.29% | WinRate=19.1%
+  Fold 2: Return=+3.38% | Sharpe=2.702 | MaxDD=-0.30% | WinRate=16.3%
+  Fold 3: Return=-1.26% | Sharpe=-0.806 | MaxDD=-1.81% | WinRate=10.8%
+
+═══════════════════════════════════════════════════════

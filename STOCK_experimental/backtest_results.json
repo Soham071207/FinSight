@@ -1,0 +1,357 @@
+{
+    "ADANIENT.NS": {
+        "sharpe": 2.34,
+        "max_drawdown": -0.7,
+        "win_rate": 10.4,
+        "total_return": 5.47,
+        "n_trades": 2
+    },
+    "ADANIPORTS.NS": {
+        "sharpe": 0.503,
+        "max_drawdown": -3.18,
+        "win_rate": 21.5,
+        "total_return": 0.99,
+        "n_trades": 8
+    },
+    "APOLLOHOSP.NS": {
+        "sharpe": 0.864,
+        "max_drawdown": -1.71,
+        "win_rate": 37.5,
+        "total_return": 1.79,
+        "n_trades": 4
+    },
+    "ASIANPAINT.NS": {
+        "sharpe": 0.423,
+        "max_drawdown": -3.88,
+        "win_rate": 49.4,
+        "total_return": 1.05,
+        "n_trades": 6
+    },
+    "AXISBANK.NS": {
+        "sharpe": 0.946,
+        "max_drawdown": -2.31,
+        "win_rate": 49.4,
+        "total_return": 3.03,
+        "n_trades": 2
+    },
+    "BAJAJ-AUTO.NS": {
+        "sharpe": 0.672,
+        "max_drawdown": -0.53,
+        "win_rate": 5.2,
+        "total_return": 0.63,
+        "n_trades": 2
+    },
+    "BAJAJFINSV.NS": {
+        "sharpe": -0.138,
+        "max_drawdown": -1.58,
+        "win_rate": 32.3,
+        "total_return": -0.29,
+        "n_trades": 4
+    },
+    "BAJFINANCE.NS": {
+        "sharpe": -0.453,
+        "max_drawdown": -2.96,
+        "win_rate": 28.3,
+        "total_return": -1.16,
+        "n_trades": 8
+    },
+    "BHARTIARTL.NS": {
+        "sharpe": -0.169,
+        "max_drawdown": -1.92,
+        "win_rate": 29.9,
+        "total_return": -0.32,
+        "n_trades": 4
+    },
+    "BPCL.NS": {
+        "sharpe": -0.928,
+        "max_drawdown": -4.77,
+        "win_rate": 25.1,
+        "total_return": -2.39,
+        "n_trades": 10
+    },
+    "BRITANNIA.NS": {
+        "sharpe": 0.422,
+        "max_drawdown": -2.56,
+        "win_rate": 51.8,
+        "total_return": 1.05,
+        "n_trades": 2
+    },
+    "CIPLA.NS": {
+        "sharpe": -0.846,
+        "max_drawdown": -3.36,
+        "win_rate": 36.3,
+        "total_return": -1.8,
+        "n_trades": 8
+    },
+    "COALINDIA.NS": {
+        "sharpe": 0.79,
+        "max_drawdown": -1.22,
+        "win_rate": 47.8,
+        "total_return": 1.99,
+        "n_trades": 2
+    },
+    "DIVISLAB.NS": {
+        "sharpe": 0.221,
+        "max_drawdown": -1.77,
+        "win_rate": 36.3,
+        "total_return": 0.47,
+        "n_trades": 4
+    },
+    "DRREDDY.NS": {
+        "sharpe": 0.643,
+        "max_drawdown": -1.77,
+        "win_rate": 51.0,
+        "total_return": 1.72,
+        "n_trades": 2
+    },
+    "EICHERMOT.NS": {
+        "sharpe": 0.989,
+        "max_drawdown": -2.88,
+        "win_rate": 49.4,
+        "total_return": 3.23,
+        "n_trades": 4
+    },
+    "GRASIM.NS": {
+        "sharpe": 0.0,
+        "max_drawdown": 0.0,
+        "win_rate": 0.0,
+        "total_return": 0.0,
+        "n_trades": 0
+    },
+    "HCLTECH.NS": {
+        "sharpe": -0.695,
+        "max_drawdown": -3.65,
+        "win_rate": 38.2,
+        "total_return": -1.65,
+        "n_trades": 4
+    },
+    "HDFCBANK.NS": {
+        "sharpe": -0.533,
+        "max_drawdown": -3.53,
+        "win_rate": 45.4,
+        "total_return": -1.25,
+        "n_trades": 8
+    },
+    "HDFCLIFE.NS": {
+        "sharpe": -1.21,
+        "max_drawdown": -4.22,
+        "win_rate": 44.2,
+        "total_return": -2.79,
+        "n_trades": 8
+    },
+    "HEROMOTOCO.NS": {
+        "sharpe": 0.793,
+        "max_drawdown": -3.64,
+        "win_rate": 50.6,
+        "total_return": 2.9,
+        "n_trades": 2
+    },
+    "HINDALCO.NS": {
+        "sharpe": 1.608,
+        "max_drawdown": -2.74,
+        "win_rate": 55.4,
+        "total_return": 6.15,
+        "n_trades": 2
+    },
+    "HINDUNILVR.NS": {
+        "sharpe": -1.096,
+        "max_drawdown": -1.8,
+        "win_rate": 10.4,
+        "total_return": -1.09,
+        "n_trades": 4
+    },
+    "ICICIBANK.NS": {
+        "sharpe": 0.414,
+        "max_drawdown": -2.2,
+        "win_rate": 46.6,
+        "total_return": 0.91,
+        "n_trades": 2
+    },
+    "INDUSINDBK.NS": {
+        "sharpe": 0.62,
+        "max_drawdown": -2.69,
+        "win_rate": 46.2,
+        "total_return": 1.89,
+        "n_trades": 2
+    },
+    "INFY.NS": {
+        "sharpe": -0.603,
+        "max_drawdown": -3.05,
+        "win_rate": 35.9,
+        "total_return": -1.58,
+        "n_trades": 4
+    },
+    "ITC.NS": {
+        "sharpe": -1.164,
+        "max_drawdown": -3.43,
+        "win_rate": 44.2,
+        "total_return": -2.28,
+        "n_trades": 10
+    },
+    "JSWSTEEL.NS": {
+        "sharpe": 1.072,
+        "max_drawdown": -1.55,
+        "win_rate": 23.1,
+        "total_return": 1.97,
+        "n_trades": 2
+    },
+    "KOTAKBANK.NS": {
+        "sharpe": 0.51,
+        "max_drawdown": -1.95,
+        "win_rate": 31.1,
+        "total_return": 0.86,
+        "n_trades": 4
+    },
+    "LT.NS": {
+        "sharpe": 1.047,
+        "max_drawdown": -3.34,
+        "win_rate": 50.6,
+        "total_return": 3.22,
+        "n_trades": 2
+    },
+    "M&M.NS": {
+        "sharpe": 0.596,
+        "max_drawdown": -3.31,
+        "win_rate": 49.4,
+        "total_return": 2.13,
+        "n_trades": 2
+    },
+    "MARUTI.NS": {
+        "sharpe": 0.206,
+        "max_drawdown": -0.67,
+        "win_rate": 11.2,
+        "total_return": 0.25,
+        "n_trades": 2
+    },
+    "NESTLEIND.NS": {
+        "sharpe": 0.959,
+        "max_drawdown": -1.4,
+        "win_rate": 53.0,
+        "total_return": 2.33,
+        "n_trades": 2
+    },
+    "NTPC.NS": {
+        "sharpe": 0.321,
+        "max_drawdown": -1.74,
+        "win_rate": 47.4,
+        "total_return": 0.73,
+        "n_trades": 2
+    },
+    "ONGC.NS": {
+        "sharpe": 0.453,
+        "max_drawdown": -2.11,
+        "win_rate": 33.1,
+        "total_return": 1.12,
+        "n_trades": 2
+    },
+    "POWERGRID.NS": {
+        "sharpe": -0.095,
+        "max_drawdown": -1.52,
+        "win_rate": 31.5,
+        "total_return": -0.22,
+        "n_trades": 8
+    },
+    "RELIANCE.NS": {
+        "sharpe": 0.454,
+        "max_drawdown": -2.72,
+        "win_rate": 46.6,
+        "total_return": 1.17,
+        "n_trades": 2
+    },
+    "SBI.NS": {
+        "sharpe": 0.0,
+        "max_drawdown": 0.0,
+        "win_rate": 0.0,
+        "total_return": 0.0,
+        "n_trades": 0
+    },
+    "SBILIFE.NS": {
+        "sharpe": 0.546,
+        "max_drawdown": -2.59,
+        "win_rate": 52.6,
+        "total_return": 1.48,
+        "n_trades": 2
+    },
+    "SBIN.NS": {
+        "sharpe": -0.606,
+        "max_drawdown": -1.77,
+        "win_rate": 11.2,
+        "total_return": -0.92,
+        "n_trades": 6
+    },
+    "SUNPHARMA.NS": {
+        "sharpe": -0.503,
+        "max_drawdown": -1.47,
+        "win_rate": 12.0,
+        "total_return": -0.46,
+        "n_trades": 2
+    },
+    "TATACONSUM.NS": {
+        "sharpe": -0.09,
+        "max_drawdown": -1.85,
+        "win_rate": 31.1,
+        "total_return": -0.21,
+        "n_trades": 4
+    },
+    "TATASTEEL.NS": {
+        "sharpe": 0.638,
+        "max_drawdown": -1.87,
+        "win_rate": 23.9,
+        "total_return": 1.59,
+        "n_trades": 4
+    },
+    "TCS.NS": {
+        "sharpe": -0.715,
+        "max_drawdown": -1.54,
+        "win_rate": 12.0,
+        "total_return": -0.99,
+        "n_trades": 4
+    },
+    "TECHM.NS": {
+        "sharpe": -0.023,
+        "max_drawdown": -3.01,
+        "win_rate": 35.9,
+        "total_return": -0.1,
+        "n_trades": 4
+    },
+    "TITAN.NS": {
+        "sharpe": 0.674,
+        "max_drawdown": -1.44,
+        "win_rate": 41.0,
+        "total_return": 1.79,
+        "n_trades": 4
+    },
+    "ULTRACEMCO.NS": {
+        "sharpe": -0.406,
+        "max_drawdown": -3.0,
+        "win_rate": 41.4,
+        "total_return": -0.92,
+        "n_trades": 6
+    },
+    "UPL.NS": {
+        "sharpe": -0.503,
+        "max_drawdown": -3.69,
+        "win_rate": 47.4,
+        "total_return": -1.85,
+        "n_trades": 6
+    },
+    "WIPRO.NS": {
+        "sharpe": -1.14,
+        "max_drawdown": -3.09,
+        "win_rate": 29.5,
+        "total_return": -2.46,
+        "n_trades": 8
+    },
+    "aggregate": {
+        "mean_sharpe": 0.1593469387755102,
+        "std_sharpe": 0.7574541557089992,
+        "n_tickers": 49,
+        "dsr_prob": 0.027480645407569386
+    },
+    "buy_and_hold_NIFTY": {
+        "sharpe": 0.796,
+        "max_drawdown": -17.23,
+        "win_rate": 53.5,
+        "total_return": 67.63
+    }
+}

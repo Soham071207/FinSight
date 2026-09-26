@@ -1,0 +1,36 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: AAPL
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : SELL
+  LightGBM Class : Sell
+  Confidence     : 0.0 / 100
+  Entry Price    : $298.01
+  Stop Loss      : $283.83
+  Target Price   : $319.27
+  Regime         : Bull Trending
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Neutral
+  Score          : -0.0060
+  3-Day Rolling  : -0.0060
+  7-Day Rolling  : -0.0060
+  Momentum       : +0.0000
+  News Volume    : 1.0000
+  Top Headline   : Apple (AAPL) Teams Up With Intel To Build Chips In The United States
+  Headline Link  : https://finance.yahoo.com/technology/ai/articles/apple-aapl-teams-intel-build-042902105.html?.tsrc=rss
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +9.59%
+  Sharpe Ratio   : 2.066
+  Max Drawdown   : -1.43%
+  Win Rate       : 19.1%
+  Total Trades   : 82
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+4.26% | Sharpe=2.537 | MaxDD=-0.92% | WinRate=25.9%
+  Fold 2: Return=+4.54% | Sharpe=2.970 | MaxDD=-0.47% | WinRate=21.5%
+  Fold 3: Return=+0.55% | Sharpe=0.437 | MaxDD=-1.43% | WinRate=10.0%
+
+═══════════════════════════════════════════════════════

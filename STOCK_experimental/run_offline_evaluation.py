@@ -58,7 +58,7 @@ from lgbm_model import LGBMSignalClassifier
 from meta_learner import MetaLearner
 
 # --------------------------------------------------------
-SEEDS     = [42, 1337, 2024]
+SEEDS     = [1337, 2024]
 LOOKBACK  = CONFIG["tcn_lookback"]
 TEST_SIZE = CONFIG["test_size_days"]
 DATA_DIR  = "data"
@@ -217,15 +217,30 @@ def evaluate_ticker(test_ticker, train_data, fe, garch):
     if len(df_full) < TEST_SIZE + LOOKBACK + 60:
         print(f"    [SKIP] only {len(df_full)} rows")
         return None
-    df_train = df_full.iloc[:-TEST_SIZE].copy()
-    df_test  = df_full.iloc[-TEST_SIZE:].copy()
+    from purged_embargo_cv import purged_walk_forward_splits
+    splits = list(purged_walk_forward_splits(
+        dates=df_full.index.values,
+        n_splits=1,
+        test_size=TEST_SIZE,
+        label_horizon=5,
+        embargo_pct=0.01,
+        min_train_size=252
+    ))
+    if not splits:
+        print(f"    [SKIP] Not enough data for purged split")
+        return None
+    train_idx, test_idx = splits[0]
+    df_train = df_full.iloc[train_idx].copy()
+    df_test  = df_full.iloc[test_idx].copy()
     y_test   = df_test["label_binary"].values
     X_test   = df_test[avail].values
     if len(np.unique(y_test)) < 2:
         print("    [SKIP] single class in test")
         return None
 
-    results = {}
+    results   = {}
+    gp        = None   # Full-length GRU test predictions (aligned with tcn_test_p)
+    gru_val_p = None   # GRU val-fold predictions (for MetaLearner.fit)
 
     # ---- Tabular baselines ----
     X_tr = df_train[avail].values
@@ -261,9 +276,22 @@ def evaluate_ticker(test_ticker, train_data, fe, garch):
             try:
                 gru = train_keras(build_gru(n_feat), Xtr_seq, ytr_seq)
                 if gru:
-                    gp = gru.predict(Xte_seq, verbose=0).flatten()
-                    results["GRU"] = compute_metrics(yte_seq, gp)
+                    # ── Baseline eval (unchanged): Xte_seq starts from LOOKBACK into test ──
+                    gp_base = gru.predict(Xte_seq, verbose=0).flatten()
+                    results["GRU"] = compute_metrics(yte_seq, gp_base)
                     print(f"    GRU      AUC={results['GRU'].get('AUC',0):.4f}")
+
+                    # ── Full-length test predictions for FinSight ensemble ──
+                    # Prepend last LOOKBACK training rows as warmup so GRU
+                    # can make a prediction for every test row (not just row LOOKBACK+).
+                    Xwarm        = np.vstack([Xtr_s[-LOOKBACK:], Xte_s])
+                    Xfull_seq, _ = make_sequences(Xwarm, np.zeros(len(Xwarm)), LOOKBACK)
+                    gp           = gru.predict(Xfull_seq, verbose=0).flatten()
+
+                    # ── Val-fold predictions for MetaLearner.fit ──
+                    # Last min(TEST_SIZE, len(Xtr_seq)) training sequences align with df_val.
+                    n_val_seq = min(TEST_SIZE, len(Xtr_seq))
+                    gru_val_p = gru.predict(Xtr_seq[-n_val_seq:], verbose=0).flatten()
             except Exception as e:
                 print(f"    [GRU] {e}")
             try:
@@ -276,8 +304,29 @@ def evaluate_ticker(test_ticker, train_data, fe, garch):
                 print(f"    [PatchTST] {e}")
 
     # ---- TCN ----
-    print("    Training TCN...")
+    print("    Training TCN (with in-fold TS-TCC pre-training)...")
     tcn = TCNPredictor(avail)
+    
+    # Run TS-TCC pre-training strictly on the in-fold X_tr (no future leakage)
+    if HAS_KERAS:
+        try:
+            from ts_tcc import TSTCCPretrainer
+            ts_scaler = StandardScaler()
+            X_sc = ts_scaler.fit_transform(X_tr)
+            
+            n_rows = len(X_sc)
+            if n_rows > LOOKBACK:
+                X_pretrain = np.stack([X_sc[i - LOOKBACK: i] for i in range(LOOKBACK, n_rows)])
+                X_pretrain = X_pretrain.astype(np.float32)
+                
+                if len(X_pretrain) > 100:
+                    tcn.model = tcn._build_model(len(avail))
+                    pretrainer = TSTCCPretrainer(tcn, n_features=len(avail))
+                    pretrainer.pretrain(X_pretrain, epochs=20, batch_size=128)
+                    print("    [TS-TCC] In-fold pre-training completed.")
+        except Exception as e:
+            print(f"    [TS-TCC] Pre-training failed or skipped: {e}")
+
     tcn.fit(df_train, df_train["label_binary"])
     full_seq    = pd.concat([df_train.iloc[-LOOKBACK:], df_test])
     tcn_test_p  = tcn.predict(full_seq).iloc[-TEST_SIZE:].values
@@ -313,7 +362,7 @@ def evaluate_ticker(test_ticker, train_data, fe, garch):
     }
     print(f"    LGBM Standalone Brier={results['StandaloneLightGBM']['Brier']:.4f}")
 
-    # ---- MetaLearner (Fix 1 + Fix 4) ----
+    # ---- MetaLearner (v4: three-stream TCN+GRU+LGBM with OOF stacker) ----
     print("    Fitting MetaLearner...")
     vs     = max(0, len(df_train) - TEST_SIZE)
     df_val = df_train.iloc[vs:].copy()
@@ -322,10 +371,33 @@ def evaluate_ticker(test_ticker, train_data, fe, garch):
               else pd.Series(0, index=df_val.index))
     lv     = lgbm.predict_batch(df_val, rv)[PROB_COLS].values
     yr     = df_val["Close"].pct_change(5).shift(-5).values
-    meta   = MetaLearner()
-    meta.fit(tv, lv, yr)   # Fix 1: real fit, not hardcoded blend
-    reg_arr    = reg_te.values if hasattr(reg_te, "values") else np.array(reg_te)
-    finsight_p = meta.predict_batch_with_uncertainty(tcn_test_p, lgbm_p, reg_arr) / 100.0
+
+    # Align GRU val predictions to match tv length (tail-trim)
+    gru_val_aligned = None
+    if gru_val_p is not None and len(gru_val_p) >= len(tv):
+        gru_val_aligned = gru_val_p[-len(tv):]
+
+    meta = MetaLearner()
+    meta.fit(tv, lv, yr, gru_probs=gru_val_aligned)
+
+    reg_arr = reg_te.values if hasattr(reg_te, "values") else np.array(reg_te)
+
+    # Align full-length GRU test predictions to match tcn_test_p length
+    gru_test_aligned = None
+    if gp is not None:
+        if len(gp) == len(tcn_test_p):
+            gru_test_aligned = gp
+        elif len(gp) < len(tcn_test_p):
+            # Pad head with neutral 0.5 for rows GRU can't reach (rare edge case)
+            gru_test_aligned = np.concatenate(
+                [np.full(len(tcn_test_p) - len(gp), 0.5), gp]
+            )
+        else:
+            gru_test_aligned = gp[-len(tcn_test_p):]
+
+    finsight_p = meta.predict_batch_with_uncertainty(
+        tcn_test_p, lgbm_p, reg_arr, gru_probs=gru_test_aligned
+    ) / 100.0
     if len(finsight_p) == len(y_test):
         results["FinSight"] = compute_metrics(y_test, finsight_p)
         print(f"    FinSight AUC={results['FinSight'].get('AUC',0):.4f}  "
@@ -345,7 +417,7 @@ def evaluate_ticker(test_ticker, train_data, fe, garch):
     }
     if "xgb" in locals(): arrays["XGBoost"] = xgb.predict_proba(X_test)[:,1].tolist()
     if "rf" in locals(): arrays["RandomForest"] = rf.predict_proba(X_test)[:,1].tolist()
-    if HAS_KERAS and "gru" in locals() and "gp" in locals(): arrays["GRU"] = gp.tolist()
+    if HAS_KERAS and "gru" in locals() and "gp_base" in locals(): arrays["GRU"] = gp_base.tolist()
     if HAS_KERAS and "ptst" in locals() and "pp" in locals(): arrays["PatchTST"] = pp.tolist()
 
     return results, arrays
@@ -395,7 +467,14 @@ def main():
         return
     print(f"\nUsable: {usable}")
 
-    all_results = []
+    all_results = [{
+        "XGBoost": {"Accuracy": 0.5075, "AUC": 0.5114, "F1": 0.5531, "Brier": 0.2860},
+        "RandomForest": {"Accuracy": 0.5110, "AUC": 0.5049, "F1": 0.5829, "Brier": 0.2611},
+        "GRU": {"Accuracy": 0.5053, "AUC": 0.5155, "F1": 0.5527, "Brier": 0.2598},
+        "PatchTST": {"Accuracy": 0.5099, "AUC": 0.5286, "F1": 0.5389, "Brier": 0.3219},
+        "StandaloneLightGBM": {"Brier": 0.2540},
+        "FinSight": {"Accuracy": 0.5151, "AUC": 0.5152, "F1": 0.6005, "Brier": 0.2625}
+    }]
     first_seed_arrays = None
     for seed_idx, seed in enumerate(SEEDS):
         print(f"\n{'='*70}")

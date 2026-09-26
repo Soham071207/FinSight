@@ -1,0 +1,39 @@
+{
+    "Bull Trending": {
+        "finsight_auc_mean": 0.5123231350456862,
+        "finsight_auc_std": 0.08663191145612321,
+        "lgbm_auc_mean": 0.5308061716962079,
+        "delta": -0.0185,
+        "n_tickers": 48
+    },
+    "Bull Ranging": {
+        "finsight_auc_mean": 0.491871521897529,
+        "finsight_auc_std": 0.090924832811433,
+        "lgbm_auc_mean": 0.5232988388508342,
+        "delta": -0.0314,
+        "n_tickers": 49
+    },
+    "Bear Trending": {
+        "finsight_auc_mean": 0.5750264324225834,
+        "finsight_auc_std": 0.16179232988359346,
+        "lgbm_auc_mean": 0.5524055468097518,
+        "delta": 0.0226,
+        "n_tickers": 46,
+        "dm_stat": 1.4363819841833325,
+        "dm_p": 0.15089367671830378
+    },
+    "Bear Ranging": {
+        "finsight_auc_mean": 0.5062159419239834,
+        "finsight_auc_std": 0.1393117951542954,
+        "lgbm_auc_mean": 0.5160272333955651,
+        "delta": -0.0098,
+        "n_tickers": 49
+    },
+    "All Regimes": {
+        "finsight_auc_mean": 0.5148016666902595,
+        "finsight_auc_std": 0.05408612970057188,
+        "lgbm_auc_mean": 0.5274673694659325,
+        "delta": -0.0127,
+        "n_tickers": 49
+    }
+}

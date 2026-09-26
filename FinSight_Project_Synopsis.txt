@@ -1,0 +1,50 @@
+PROJECT SYNOPSIS
+
+Project Title: FinSight: AI-Powered Personal Finance Management Application
+
+1. Introduction & Problem Statement
+-----------------------------------
+Retail investors and everyday users often struggle to manage their personal finances effectively because tools for expense tracking, credit score monitoring, mutual fund research, and stock market prediction are scattered across disjointed applications. FinSight aims to bridge this gap by offering a unified, cross-platform "Super-App." By leveraging advanced Machine Learning (ML) models and automated real-time data pipelines, FinSight provides users with institutional-grade financial analytics in an accessible mobile interface.
+
+2. Objectives
+-------------
+- To build a comprehensive personal finance companion that unifies expense tracking, mutual fund analysis, stock prediction, and credit scoring.
+- To implement an ensemble Machine Learning architecture capable of predicting stock trends using technical indicators, market regimes, and NLP-based sentiment analysis.
+- To automate expense logging via intelligent, real-time SMS parsing (Android).
+- To evaluate mutual funds and ETFs using advanced risk-adjusted metrics (XIRR, Sharpe, Sortino) and automated daily data synchronization.
+- To provide a dual-layer CIBIL score predictor featuring both an ML-based cloud inference engine and a rule-based offline fallback.
+
+3. Proposed System Architecture & Modules
+-----------------------------------------
+FinSight is architected using a Flutter (Dart) frontend for cross-platform mobile compatibility and a dual-container Python backend hosted on Render.com to serve the ML predictions via REST APIs.
+
+Module 1: AI-Powered Stock Prediction System
+- Utilizes a 9-stage multi-model ensemble (LSTM Neural Network + LightGBM Classifier + GARCH Volatility + Ridge Regression Meta-Learner).
+- Automatically scrapes global financial news and scores sentiment using VADER and HuggingFace FinBERT.
+- Generates BUY/SELL/HOLD signals with target prices, stop losses, and confidence scores based on 4 distinct market regimes.
+
+Module 2: Pro Mutual Fund Analysis & Comparison
+- Backtests and projects SIP, Lumpsum, and Hybrid investments.
+- Computes institutional risk metrics (CAGR, Alpha, Beta, Max Drawdown).
+- An automated GitHub Actions sync engine refreshes NAV data daily, ranking over 350+ domestic funds and 90+ international ETFs.
+
+Module 3: Hybrid CIBIL/Credit Score Calculator
+- Cloud ML Model: A LightGBM regressor trained on 42 financial features merged from internal bank and external credit bureau datasets.
+- Local Fallback: An on-device Dart algorithm evaluating 5 key credit factors for offline use.
+- Automatically generates personalized credit improvement tips based on the weakest factors.
+
+Module 4: Intelligent Expense Tracker
+- Auto-imports expenses via real-time Android SMS interception.
+- Employs Regex pipelines to extract amounts, merchants, and automatically categorize transactions (while explicitly ignoring incoming credits).
+- Includes an "Investment Advisor" that detects overspending and suggests automated capital reallocation into curated investment instruments (e.g., Liquid Funds, Sovereign Gold Bonds).
+
+4. Technology Stack
+-------------------
+Frontend: Flutter (Dart), Riverpod, GoRouter, Hive (NoSQL Local Storage), Syncfusion Charts.
+Backend / API: Python 3.10, Flask, Gunicorn, Docker (hosted on Render.com).
+Machine Learning: TensorFlow/Keras, LightGBM, scikit-learn, arch, NLTK, Transformers.
+Data Pipelines: yfinance, mftool, BeautifulSoup4, PRAW (Reddit API), GitHub Actions.
+
+5. Conclusion & Future Scope
+----------------------------
+FinSight successfully democratizes institutional financial tools by bundling them into a cohesive, user-friendly ecosystem. Future iterations will explore the integration of official account aggregator APIs for direct bank linking (bypassing the need for SMS tracking), real-time algorithmic trading execution hooks, and full expansion to iOS devices.

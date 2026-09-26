@@ -1,0 +1,36 @@
+═══════════════════════════════════════════════════════
+  STOCK PREDICTION REPORT: RELIANCE.NS
+═══════════════════════════════════════════════════════
+
+  ── SIGNAL ──────────────────────────────────────────
+  Action         : SELL
+  LightGBM Class : Sell
+  Confidence     : 0.0 / 100
+  Entry Price    : ₹1309.50
+  Stop Loss      : ₹1256.05
+  Target Price   : ₹1389.68
+  Regime         : Bear Ranging
+
+  ── SENTIMENT ───────────────────────────────────────
+  Sentiment      : Bullish
+  Score          : +0.2662
+  3-Day Rolling  : +0.2662
+  7-Day Rolling  : +0.2662
+  Momentum       : +0.0000
+  News Volume    : 0.9500
+  Top Headline   : Reliance Standalone June 2026 Net Sales at Rs 163,631.00 crore, up 40.65% Y-o-Y
+  Headline Link  : https://www.moneycontrol.com/news/business/earnings/reliance-standalone-june-2026-net-sales-at-rs-163631-00-crore-up-40-65-y-o-y-13986560.html
+
+  ── BACKTEST METRICS (Combined) ─────────────────────
+  Total Return   : +1.43%
+  Sharpe Ratio   : 0.234
+  Max Drawdown   : -3.22%
+  Win Rate       : 46.2%
+  Total Trades   : 22
+
+  ── PER-FOLD BREAKDOWN ──────────────────────────────
+  Fold 1: Return=+2.59% | Sharpe=1.217 | MaxDD=-1.69% | WinRate=52.2%
+  Fold 2: Return=-0.17% | Sharpe=-0.062 | MaxDD=-3.22% | WinRate=44.2%
+  Fold 3: Return=-0.96% | Sharpe=-0.475 | MaxDD=-2.15% | WinRate=42.2%
+
+═══════════════════════════════════════════════════════

@@ -1,0 +1,104 @@
+# Robust Stock Prediction in Small Data Regimes: A TCN and Regime-Aware LightGBM Stacking Ensemble
+Dhananjay Bhagat, Shauryavardhan, Soham Shelkar, Harshraj Shevale, Manas Shinde
+Department of Engineering, Sciences and Humanities (DESH)
+Vishwakarma Institute of Technology, Pune, Maharashtra, India
+
+Abstract— Financial time series prediction using daily data frequently suffers from severe data limitations, with typical datasets containing merely 1,000 to 2,000 samples. In such constrained environments, deep learning architectures often overfit, while simpler models fail to capture non-linear dynamics. This paper presents an optimized stacking ensemble explicitly designed for small data regimes. The system replaces traditional LSTM networks with a simplified Temporal Convolutional Network (TCN) featuring causal dilations, and employs a single global LightGBM model utilizing market regime (derived from EMA and ADX) as a categorical feature, mitigating the data fragmentation of per-regime models. Furthermore, we introduce dynamic, Average True Range (ATR)-based labeling to replace static percentage thresholds, ensuring the model adapts to time-varying volatility. The ensemble fuses the TCN probabilities, LightGBM multi-class outputs, and GARCH(1,1) volatility estimates via a Rank-Blend meta-learner, discarding traditional ridge regression to prevent overfitting. A hybrid NLP sentiment pipeline (FinBERT + VADER) provides orthogonal predictive signal. Evaluated through a rigorous walk-forward backtest on NSE equities with realistic next-day-open execution and slippage modeling, the system achieves a 1.43% out-of-sample return against a -8.7% buy-and-hold benchmark drawdown, maintaining a Sharpe ratio of 0.234. While the TCN contributes minimal discriminative power (AUC=0.529), the gradient boosting component (AUC=0.799) drives system performance, demonstrating that tree-based methods remain superior for tabular financial data in small sample regimes.
+
+Index Terms— Temporal Convolutional Networks, LightGBM, GARCH, FinBERT, Stacking Ensemble, Rank-Blend, Algorithmic Trading, Financial Time Series
+
+## I. INTRODUCTION
+Predicting stock market movements using daily Open-High-Low-Close-Volume (OHLCV) data is a notoriously difficult task, often characterized by low signal-to-noise ratios and non-stationary distributions. A critical but frequently underreported challenge in academic literature is the reality of small data regimes. A five-year historical window of daily trading data yields approximately 1,250 samples. At this scale, highly parameterized deep learning models such as Long Short-Term Memory (LSTM) networks or Transformers are prone to severe overfitting, essentially memorizing in-sample noise rather than learning generalizable market dynamics.
+
+To address this, we present a robust, highly constrained prediction pipeline explicitly optimized for small sample sizes. We pivot away from complex, parameter-heavy architectures in favor of a simplified Temporal Convolutional Network (TCN) [1] and a regime-aware LightGBM classifier [2]. 
+
+This paper makes the following key contributions:
+1. We demonstrate that in ~1,000 sample datasets, a vastly simplified TCN (32 filters, ~15K parameters) combined with MC Dropout for uncertainty estimation is methodologically superior to standard LSTMs, though still subservient to tree-based methods in overall discriminative power.
+2. We introduce dynamic, ATR-based labeling for the LightGBM target variable, eliminating the fragility of static percentage thresholds that fail during high volatility regimes.
+3. We consolidate fragmented per-regime models into a single global LightGBM model that treats the market regime as a categorical feature, maximizing data efficiency and enabling robust SHAP-based [3] explainability.
+4. We employ a Rank-Blend meta-learner based on Youden's J statistic, mathematically preserving AUC and preventing the overfitting common in secondary stacking regressors.
+5. We implement a highly realistic walk-forward backtest engine that rigorously enforces Next-Day-Open execution with slippage, eliminating the look-ahead bias prevalent in studies utilizing Same-Day-Close execution.
+
+## II. METHODOLOGY
+
+### A. Data Preprocessing and Feature Engineering
+Historical OHLCV data is retrieved with a minimum history of 500 trading days. The feature engineering pipeline computes 21 core technical indicators across momentum, volatility, trend, and volume.
+
+Critically, to model time-varying variance, we fit a GARCH(1,1) model [4] to the daily log-returns:
+```
+\sigma^2_t = \omega + \alpha\epsilon^2_{t-1} + \beta\sigma^2_{t-1}
+```
+The fitted conditional volatility \sigma_t is injected as an orthogonal feature (`garch_vol`), allowing downstream models to distinguish between structural trends and high-variance noise. 
+
+A multi-source NLP pipeline aggregates financial news, generating a blended sentiment score (0.3 × VADER + 0.7 × FinBERT). For historical training, a 5-day rolling return polarity proxy is utilized to prevent data leakage.
+
+### B. Simplified TCN Architecture
+Standard LSTMs possess sequential bottlenecks and high parameter counts. We replace the LSTM with a Temporal Convolutional Network featuring causal convolutions to prevent information leakage from future to past, and dilations (1, 2, 4, 8, 16) to exponentially expand the receptive field to 60 days.
+To prevent overfitting on small data, the TCN is severely constrained:
+* Filters: 32 (reduced from 128)
+* Dense Units: 16 (reduced from 64)
+* Parameters: ~15,000
+We also integrate Monte Carlo (MC) Dropout, performing 50 forward passes at inference to generate an uncertainty metric (predictive variance).
+
+### C. Dynamic ATR-Based LightGBM Classifier
+Traditional models use static percentage thresholds (e.g., >2% for Strong Buy). This approach collapses during periods of high volatility. We implement a dynamic labeling scheme normalized by the 14-day Average True Range (ATR):
+* Strong Buy: r > 1.25 × ATR
+* Buy: 0.25 × ATR < r ≤ 1.25 × ATR
+* Hold: -0.5 × ATR < r ≤ 0.25 × ATR
+* Sell: r ≤ -0.5 × ATR
+
+Furthermore, rather than splitting the limited ~1,000 sample dataset into four separate models based on market regime (which leaves <250 samples per model), we train a single global LightGBM model. The regime (Bull Trending, Bull Ranging, Bear Trending, Bear Ranging) is passed as a categorical feature, allowing the gradient boosting tree to dynamically partition the feature space without starving the algorithm of data.
+
+### D. Rank-Blend Meta-Learner
+Using a regression meta-learner (like Ridge or LightGBM) on the output probabilities of base models on a small dataset reliably leads to overfitting. Instead, we implement a Rank-Blend meta-learner. 
+The probabilities from the TCN and the LightGBM models are converted to percentile ranks, and a grid search determines the optimal convex combination weight that maximizes the validation AUC. The optimal decision boundary is determined using Youden's J statistic (Sensitivity + Specificity - 1) on the ROC curve.
+
+### E. Realistic Walk-Forward Backtesting
+Many academic backtests suffer from look-ahead bias by calculating signals using today's Close price and executing the trade at the exact same Close price. 
+Our backtest engine strictly enforces realism:
+1. Signals are generated using data up to day *t* (Close).
+2. Trades are executed at day *t+1* (Open).
+3. A 10 basis points (bps) slippage penalty is applied per trade, in addition to standard 10 bps transaction costs.
+4. Stop losses are dynamically set to the execution price minus 1.5 × ATR.
+
+## III. RESULTS AND DISCUSSION
+
+The experimental system was evaluated on RELIANCE.NS using a strict 3-fold Walk-Forward cross-validation scheme.
+
+### A. Model Discriminative Power
+The empirical results reveal the stark reality of deep learning on small tabular datasets:
+
+| Model Component | Optimization Metric | Out-of-Sample AUC |
+|---|---|---|
+| TCN (Deep Learning) | Binary Crossentropy | 0.5293 |
+| LightGBM (Gradient Boosting) | Multi-Logloss | 0.7994 |
+| Rank-Blend Meta-Learner | Youden's J Threshold | 0.7994 |
+
+The TCN achieves an AUC of 0.529, which is statistically indistinguishable from random guessing. Despite causal dilations and MC Dropout regularization, the ~1,000 samples are insufficient for the neural network to extract generalizable patterns beyond simple momentum.
+Conversely, the LightGBM model achieves an impressive 0.799 AUC. The Rank-Blend meta-learner correctly identifies the TCN's weakness, assigning it a lower weight, allowing the ensemble to maintain the robust performance of the LightGBM classifier.
+
+### B. SHAP Explainability
+TreeExplainer SHAP (SHapley Additive exPlanations) values confirm that the LightGBM model relies heavily on GARCH conditional volatility, recent rolling returns (5-day, 10-day), and the dynamically computed ATR features. The `tcn_prob` feature ranks low in importance, corroborating the AUC findings. The categorical `regime` feature shows distinct SHAP value bifurcations, validating its inclusion as a global feature.
+
+### C. Financial Backtest Performance
+With look-ahead bias eliminated and 10 bps slippage enforced, the financial performance reflects a highly conservative, realistic outcome over the challenging out-of-sample period:
+
+| Metric | Fold 1 | Fold 2 | Fold 3 | Combined |
+|---|---|---|---|---|
+| Return | +2.59% | -0.17% | -0.96% | +1.43% |
+| Sharpe Ratio | 1.217 | -0.062 | -0.475 | 0.234 |
+| Max Drawdown | -1.69% | -3.22% | -2.15% | -3.22% |
+| Win Rate | 52.2% | 44.2% | 42.2% | 46.2% |
+
+Over the exact same period, a passive Buy & Hold strategy yielded a -8.7% return with a -20.6% maximum drawdown. While the system's absolute return (+1.43%) is modest, it successfully navigates a severe bearish regime, heavily curtailing drawdowns (-3.22%) and demonstrating superior risk management via the ATR-based stop-loss mechanics and regime awareness.
+
+## IV. CONCLUSION
+This study provides a rigorous, empirically grounded analysis of stock prediction in small data regimes. We demonstrate that while deep learning architectures like TCNs offer theoretical advantages in temporal modeling, they fail to provide meaningful discriminative power (AUC=0.529) on datasets typical of daily trading (~1,000 samples). In contrast, tree-based methods like LightGBM, augmented with dynamic ATR-based target labeling, GARCH volatility features, and global regime-awareness, deliver robust performance (AUC=0.799). 
+
+Crucially, by enforcing strict next-day-open execution and slippage modeling, we present performance metrics (Sharpe 0.234) that are fully realizable in live trading, dispensing with the inflated metrics often produced by flawed, same-day-close backtesting methodologies. Future work for deep learning in this domain must focus on intraday, high-frequency data where sample sizes reach the millions necessary for neural architectures to converge effectively.
+
+## REFERENCES
+[1] S. Bai, J. Z. Kolter, and V. Koltun, "An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling," arXiv:1803.01271, 2018.
+[2] G. Ke et al., "LightGBM: A Highly Efficient Gradient Boosting Decision Tree," Advances in Neural Information Processing Systems, vol. 30, 2017.
+[3] S. M. Lundberg and S. Lee, "A Unified Approach to Interpreting Model Predictions," Advances in Neural Information Processing Systems, vol. 30, 2017.
+[4] T. Bollerslev, "Generalized Autoregressive Conditional Heteroskedasticity," Journal of Econometrics, vol. 31, no. 3, pp. 307–327, 1986.
